@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+.git/
+.gitignore
+.streamlit/secrets.toml
+salida_prueba.xlsx
+_2. - TURNO A - 17_01_2026 CONTROL PRODUCTO TERMINADO MANGO CONGELADO.xlsx

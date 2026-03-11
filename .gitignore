@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+env/
+
+# Local files / outputs
+salida_prueba.xlsx
+_2. - TURNO A - 17_01_2026 CONTROL PRODUCTO TERMINADO MANGO CONGELADO.xlsx
+
+# Keep this template in repo for default behavior
+*.xlsx
+!EXAMPLE_DATA_PROCESO_MANGO.xlsx

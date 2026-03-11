@@ -1,0 +1,431 @@
+﻿{
+  "default_profile": "mango_control_estandar",
+  "profiles": [
+    {
+      "id": "mango_control_estandar",
+      "name": "Mango Control Estandar",
+      "description": "Formatos similares al control de producto terminado mango congelado (v6-v11).",
+      "match_tokens": [
+        "CONTROL DE PRODUCTO TERMINADO MANGO CONGELADO",
+        "MUESTRAS",
+        "TEMPERATURA"
+      ],
+      "field_order": [
+        "fecha_analisis",
+        "cliente",
+        "turno",
+        "fecha_produccion",
+        "formato",
+        "numero_hoja",
+        "convencional",
+        "organico",
+        "variedad",
+        "tamano_muestra",
+        "muestras",
+        "hora",
+        "lote_mp",
+        "codigo_produccion",
+        "pallet_pt",
+        "ph",
+        "bx",
+        "color_decolor",
+        "color_palido",
+        "tamano_irregular",
+        "tamano_menor",
+        "tamano_mayor",
+        "tamano_sumatoria",
+        "defecto_sobremaduro",
+        "defecto_decoloracion",
+        "defecto_danio",
+        "defecto_aglomerado",
+        "defecto_piel",
+        "defecto_sumatoria",
+        "serio_piel",
+        "serio_semilla",
+        "serio_mat_vegetal",
+        "serio_mat_extrana",
+        "motoso",
+        "duro",
+        "otros_1",
+        "otros_2",
+        "otros_3",
+        "otros_4",
+        "temperatura",
+        "sabor"
+      ],
+      "metadata_cells": {
+        "fecha_analisis": "D6",
+        "cliente": "I6",
+        "turno": "N6",
+        "fecha_produccion": "D8",
+        "formato": "I8",
+        "numero_hoja": "N8",
+        "variedad": "I10",
+        "tamano_muestra": "N10"
+      },
+      "metadata_date_fields": [
+        "fecha_analisis",
+        "fecha_produccion"
+      ],
+      "header_cells": {
+        "fecha_analisis": "A6",
+        "cliente": "G6",
+        "turno": "M6",
+        "fecha_produccion": "A8",
+        "formato": "G8",
+        "numero_hoja": "M8",
+        "convencional": "B10",
+        "organico": "E10",
+        "variedad": "G10",
+        "tamano_muestra": "K10"
+      },
+      "sample_config": {
+        "row_key": "muestras",
+        "start_col": 6,
+        "header_regex": "N\\s*°?\\s*\\d+"
+      },
+      "signal_row_keys": [
+        "hora",
+        "lote_mp",
+        "pallet_pt",
+        "ph",
+        "bx",
+        "defecto_danio",
+        "defecto_sumatoria",
+        "temperatura",
+        "sabor"
+      ],
+      "row_rules": {
+        "muestras": {
+          "find": {
+            "tokens": [
+              "MUESTRAS"
+            ],
+            "columns": [
+              1
+            ]
+          }
+        },
+        "hora": {
+          "find": {
+            "tokens": [
+              "HORA"
+            ],
+            "columns": [
+              1
+            ]
+          }
+        },
+        "lote_mp": {
+          "find": {
+            "tokens": [
+              "LOTE",
+              "M",
+              "P"
+            ],
+            "columns": [
+              1
+            ]
+          }
+        },
+        "codigo_produccion": {
+          "find": {
+            "tokens": [
+              "CODIGO",
+              "PRODUCCION"
+            ],
+            "columns": [
+              1
+            ]
+          }
+        },
+        "pallet_pt": {
+          "find": {
+            "tokens": [
+              "PALLET",
+              "PT"
+            ],
+            "columns": [
+              1
+            ]
+          }
+        },
+        "ph": {
+          "find": {
+            "tokens": [
+              "PH"
+            ],
+            "columns": [
+              2
+            ]
+          }
+        },
+        "bx": {
+          "find": {
+            "tokens": [
+              "BX"
+            ],
+            "columns": [
+              2
+            ]
+          }
+        },
+        "color_decolor": {
+          "find": {
+            "tokens": [
+              "DECOLOR"
+            ],
+            "columns": [
+              2
+            ]
+          }
+        },
+        "color_palido": {
+          "find": {
+            "tokens": [
+              "PALIDO"
+            ],
+            "columns": [
+              2
+            ]
+          }
+        },
+        "tamano_irregular": {
+          "find": {
+            "tokens": [
+              "IRREGULAR"
+            ],
+            "columns": [
+              2
+            ]
+          }
+        },
+        "tamano_menor": {
+          "offset_from": "tamano_irregular",
+          "offset": 1,
+          "offset_tokens": [
+            "20",
+            "20"
+          ],
+          "offset_columns": [
+            2
+          ],
+          "fallback_find": {
+            "tokens": [
+              "20",
+              "20"
+            ],
+            "columns": [
+              2
+            ]
+          }
+        },
+        "tamano_mayor": {
+          "offset_from": "tamano_irregular",
+          "offset": 2,
+          "offset_tokens": [
+            "30",
+            "30"
+          ],
+          "offset_columns": [
+            2
+          ],
+          "fallback_find": {
+            "tokens": [
+              "30",
+              "30"
+            ],
+            "columns": [
+              2
+            ]
+          }
+        },
+        "tamano_sumatoria": {
+          "offset_from": "tamano_irregular",
+          "offset": 3,
+          "offset_tokens": [
+            "SUMATORIA"
+          ],
+          "offset_columns": [
+            2
+          ],
+          "fallback_find": {
+            "tokens": [
+              "SUMATORIA"
+            ],
+            "columns": [
+              2
+            ]
+          }
+        },
+        "defecto_sobremaduro": {
+          "find": {
+            "tokens": [
+              "SOBREMAD"
+            ],
+            "columns": [
+              3
+            ]
+          }
+        },
+        "defecto_decoloracion": {
+          "find": {
+            "tokens": [
+              "DECOLOR"
+            ],
+            "columns": [
+              3
+            ],
+            "min_row_from": "defecto_sobremaduro"
+          }
+        },
+        "defecto_danio": {
+          "find": {
+            "tokens": [
+              "DANO"
+            ],
+            "columns": [
+              3
+            ],
+            "min_row_from": "defecto_sobremaduro"
+          }
+        },
+        "defecto_aglomerado": {
+          "find": {
+            "tokens": [
+              "AGLOMERADO"
+            ],
+            "columns": [
+              3
+            ],
+            "min_row_from": "defecto_sobremaduro"
+          }
+        },
+        "defecto_piel": {
+          "find": {
+            "tokens": [
+              "PIEL"
+            ],
+            "columns": [
+              3
+            ],
+            "min_row_from": "defecto_sobremaduro"
+          }
+        },
+        "defecto_sumatoria": {
+          "find": {
+            "tokens": [
+              "SUMATORIA"
+            ],
+            "columns": [
+              3
+            ],
+            "min_row_from": "defecto_sobremaduro"
+          }
+        },
+        "serio_piel": {
+          "find": {
+            "tokens": [
+              "PIEL"
+            ],
+            "columns": [
+              3
+            ],
+            "min_row_from": "defecto_sumatoria"
+          }
+        },
+        "serio_semilla": {
+          "find": {
+            "tokens": [
+              "SEMILLA"
+            ],
+            "columns": [
+              3
+            ],
+            "min_row_from": "defecto_sumatoria"
+          }
+        },
+        "serio_mat_vegetal": {
+          "find": {
+            "tokens": [
+              "MAT",
+              "VEGETAL"
+            ],
+            "columns": [
+              3
+            ],
+            "min_row_from": "defecto_sumatoria"
+          }
+        },
+        "serio_mat_extrana": {
+          "find": {
+            "tokens": [
+              "MAT",
+              "EXTRA"
+            ],
+            "columns": [
+              3
+            ],
+            "min_row_from": "defecto_sumatoria"
+          }
+        },
+        "motoso": {
+          "find": {
+            "tokens": [
+              "MOTOSO"
+            ],
+            "columns": [
+              2
+            ],
+            "min_row_from": "defecto_sumatoria"
+          }
+        },
+        "duro": {
+          "find": {
+            "tokens": [
+              "DURO"
+            ],
+            "columns": [
+              2
+            ],
+            "min_row_from": "defecto_sumatoria"
+          }
+        },
+        "otros": {
+          "find": {
+            "tokens": [
+              "OTROS"
+            ],
+            "columns": [
+              2
+            ],
+            "min_row_from": "defecto_sumatoria"
+          },
+          "fallback_from": "duro",
+          "fallback_offset": 1
+        },
+        "temperatura": {
+          "find": {
+            "tokens": [
+              "TEMPERATURA"
+            ],
+            "columns": [
+              1
+            ]
+          }
+        },
+        "sabor": {
+          "find": {
+            "tokens": [
+              "SABOR"
+            ],
+            "columns": [
+              1
+            ],
+            "min_row_from": "temperatura"
+          }
+        }
+      }
+    }
+  ]
+}
